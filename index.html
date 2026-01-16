@@ -8,20 +8,21 @@
 
   <style>
     :root{
-      --bg: #f5f7fb;
+      --bg: #f6f7fb;
       --card: #ffffff;
-      --text: #1f2937;
+      --text: #111827;
       --muted: #6b7280;
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
       --border: #e5e7eb;
-      --shadow: 0 10px 20px rgba(0,0,0,0.08);
+      --shadow: 0 10px 22px rgba(0,0,0,0.08);
       --radius: 14px;
       --max: 1050px;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
     body{
       font-family: Arial, Helvetica, sans-serif;
       background: linear-gradient(to bottom right, #f8fafc, #eef2ff);
@@ -30,55 +31,547 @@
     }
 
     .container{
-      width:100%;
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 18px;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px;
+      width: 100%;
     }
 
+    /* Header */
     header{
-      background:#0f172a;
-      color:white;
-      position:sticky;
-      top:0;
-      z-index:999;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #0f172a;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      color: white;
     }
 
     .nav-bar{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
+      padding: 14px 0;
       position: relative;
+      gap: 12px;
     }
 
     .brand .name{
-      font-size:1.05rem;
-      font-weight:800;
-      letter-spacing:0.3px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
     }
+
     .brand .role{
-      font-size:0.85rem;
-      color:rgba(255,255,255,0.75);
-      margin-top:2px;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
     }
 
     nav a{
       color: rgba(255,255,255,0.9);
-      text-decoration:none;
-      font-weight:700;
-      font-size:0.95rem;
-      padding:8px 10px;
-      border-radius:10px;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
       transition: background 0.2s ease;
     }
-    nav a:hover{background: rgba(37,99,235,0.18);}
+
+    nav a:hover{
+      background: rgba(37,99,235,0.18);
+    }
 
     .nav-toggle{
       display:none;
-      border:1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.20);
       background: rgba(255,255,255,0.08);
-      color:white;
-      padding:10px
+      color: white;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 35px;
+    }
+
+    .hero-card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px 24px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .hero h1{
+      font-size: 2.3rem;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero p{
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 60ch;
+      font-size: 1.03rem;
+    }
+
+    .cta{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary{
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover{
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline{
+      background: #f8fafc;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover{
+      background: #eef2ff;
+      transform: translateY(-1px);
+    }
+
+    .hero-side{
+      background: linear-gradient(to bottom right, #2563eb, #4f46e5);
+      color: white;
+      padding: 18px;
+      border-radius: var(--radius);
+    }
+
+    .hero-side h3{
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-side ul{
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Sections */
+    main{
+      padding-bottom: 60px;
+    }
+
+    section{
+      scroll-margin-top: 90px;
+      margin: 18px 0;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    h2{
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* Skills */
+    .skills{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill{
+      background: #eef2ff;
+      border: 1px solid #dbeafe;
+      color: #1e3a8a;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Projects */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .project{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fbfdff;
+      padding: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.10);
+    }
+
+    .project-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .badge{
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      white-space: nowrap;
+    }
+
+    .inprogress{
+      background: #fff7ed;
+      color: #9a3412;
+      border-color: #fed7aa;
+    }
+    .completed{
+      background: #ecfdf5;
+      color: #065f46;
+      border-color: #a7f3d0;
+    }
+
+    .project p{
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .tag{
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .project a{
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .project a:hover{ text-decoration: underline; }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .contact-item{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fbfdff;
+    }
+
+    .contact-item a{
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    footer{
+      text-align:center;
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-card{ grid-template-columns: 1fr; }
+      .projects-grid{ grid-template-columns: 1fr; }
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px){
+      .nav-toggle{ display:inline-block; }
+      .nav-links{
+        display:none;
+        position:absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: #0f172a;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 14px;
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .nav-links.open{ display:flex; }
+      nav a{ width: 100%; }
+      .hero h1{ font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="nav-bar">
+        <div class="brand">
+          <div class="name">Rita Akumu</div>
+          <div class="role">Data Analyst | Business & Operations Support</div>
+        </div>
+
+        <button class="nav-toggle" id="navToggle">☰ Menu</button>
+
+        <nav>
+          <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div>
+          <h1>Turning data into clear insights & business decisions.</h1>
+          <p>
+            I’m a Data Analyst with a background in Economics and Statistics. I help teams improve decision-making
+            through data cleaning, dashboards, and reporting.
+          </p>
+
+          <div class="cta">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-outline" href="https://github.com/RitaAkumu" target="_blank">GitHub</a>
+            <a class="btn btn-outline" href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <h3>What I can help with</h3>
+          <ul>
+            <li>📊 Dashboards & KPI reporting (Power BI / Excel)</li>
+            <li>🧹 Data cleaning & analysis (Python / SQL)</li>
+            <li>📈 Business insights & performance tracking</li>
+            <li>🏥 Healthcare & public health analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- About -->
+    <section id="about">
+      <div class="card">
+        <h2>About Me</h2>
+        <p class="subtitle">
+          I enjoy remote roles where I support teams through reporting, dashboards, and data-driven strategy.
+        </p>
+        <p>
+          I’m a data analyst and business support professional with experience working with healthcare data,
+          facilities management, financial records, ERP systems, and performance reports.
+          I focus on transforming raw data into actionable insights that improve decision-making and operations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="card">
+        <h2>Skills & Tools</h2>
+        <p class="subtitle">Core tools I use for analysis, reporting, and dashboards.</p>
+
+        <div class="skills">
+          <span class="pill">Python</span>
+          <span class="pill">Excel</span>
+          <span class="pill">SQL</span>
+          <span class="pill">SPSS</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">ERP Systems</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill">Dashboards</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="card">
+        <h2>Projects</h2>
+        <p class="subtitle">A few of my analytics projects with GitHub links.</p>
+
+        <div class="projects-grid">
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Barriers to Skilled Maternal Healthcare in Kenya (DHS)</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+            <p>Exploring why some women deliver at home instead of health facilities using DHS data.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Public Health</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Maternal-Healthcare-Barriers" target="_blank">View on GitHub →</a>
+          </div>
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Healthcare Data Analysis</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+            <p>Analyzed healthcare datasets to monitor trends and support resource planning.</p>
+            <div class="tags">
+              <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Power BI</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Healthcare-facilities.git" target="_blank">View on GitHub →</a>
+          </div>
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Superstore Data Analysis</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+            <p>EDA on Superstore dataset for sales performance and regional trends.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">EDA</span><span class="tag">Insights</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Superstore-dataset.git" target="_blank">View on GitHub →</a>
+          </div>
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Udemy Course Analysis</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+            <p>Analyzing Udemy course trends in ratings, engagement, and popularity.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Udemy-dataset" target="_blank">View on GitHub →</a>
+          </div>
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Walmart Sales Analysis</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+            <p>EDA on Walmart sales data to uncover seasonality and top-performing products.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Retail</span><span class="tag">Trends</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Walmart-sales" target="_blank">View on GitHub →</a>
+          </div>
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Titanic Dataset Analysis</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+            <p>Cleaning and visualization to examine survival patterns and demographics.</p>
+            <div class="tags">
+              <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Visualization</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Titanic-Dataset" target="_blank">View on GitHub →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <p class="subtitle">Let’s connect — I’m open to remote opportunities and collaborations.</p>
+
+        <div class="contact-grid">
+          <div class="contact-item">
+            <strong>📧 Email</strong>
+            <p><a href="mailto:ritakumu20@gmail.com">ritakumu20@gmail.com</a></p>
+          </div>
+          <div class="contact-item">
+            <strong>💼 LinkedIn</strong>
+            <p><a href="https://www.linkedin.com/in/rita-akumu/" target="_blank">linkedin.com/in/rita-akumu</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Rita Akumu — Built with HTML & CSS
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("navToggle");
+      const links = document.getElementById("navLinks");
+      toggle.addEventListener("click", () => links.classList.toggle("open"));
+      document.getElementById("year").textContent = new Date().getFullYear();
+    });
+  </script>
+
+</body>
+</html>
