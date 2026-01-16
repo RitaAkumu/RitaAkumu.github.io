@@ -20,16 +20,8 @@
       --max: 1050px;
     }
 
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html{
-      scroll-behavior: smooth;
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
     body{
       font-family: Arial, Helvetica, sans-serif;
       background: linear-gradient(to bottom right, #f8fafc, #eef2ff);
@@ -37,26 +29,56 @@
       line-height: 1.6;
     }
 
-    /* Skip link (accessibility) */
-    .skip-link{
-      position: absolute;
-      top: -40px;
-      left: 10px;
-      background: var(--primary);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 8px;
-      z-index: 9999;
-      transition: top 0.2s ease;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .skip-link:focus{
-      top: 10px;
+    .container{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
     }
 
-    /* Layout container */
-    .container{
-      width: 100%;
-      max-width: var(--max);
-      margin:
+    header{
+      background:#0f172a;
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:999;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+      position: relative;
+    }
+
+    .brand .name{
+      font-size:1.05rem;
+      font-weight:800;
+      letter-spacing:0.3px;
+    }
+    .brand .role{
+      font-size:0.85rem;
+      color:rgba(255,255,255,0.75);
+      margin-top:2px;
+    }
+
+    nav a{
+      color: rgba(255,255,255,0.9);
+      text-decoration:none;
+      font-weight:700;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:10px;
+      transition: background 0.2s ease;
+    }
+    nav a:hover{background: rgba(37,99,235,0.18);}
+
+    .nav-toggle{
+      display:none;
+      border:1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color:white;
+      padding:10px
