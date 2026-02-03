@@ -307,6 +307,37 @@
     }
     .project a:hover{ text-decoration: underline; }
 
+    /* Project Filters (NEW) */
+    .filters{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 18px;
+    }
+
+    .filter-btn{
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text);
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: transform 0.15s ease, background 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover{
+      background: #eef2ff;
+      transform: translateY(-1px);
+    }
+
+    .filter-btn.active{
+      background: rgba(37,99,235,0.12);
+      border-color: rgba(37,99,235,0.35);
+      color: #1d4ed8;
+    }
+
     /* Contact */
     .contact-grid{
       display:grid;
@@ -375,13 +406,14 @@
           <div class="role">Data Analyst | Business & Operations Support</div>
         </div>
 
-        <button class="nav-toggle" id="navToggle">☰ Menu</button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu">☰ Menu</button>
 
         <nav>
           <div class="nav-links" id="navLinks">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
+            <a href="#projects">Portfolio</a>
+            <a href="#writing">Writing</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
@@ -401,8 +433,8 @@
           </p>
 
           <div class="cta">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-outline" href="https://github.com/RitaAkumu" target="_blank">GitHub</a>
+            <a class="btn btn-primary" href="#projects">View Portfolio</a>
+            <a class="btn btn-outline" href="https://github.com/RitaAkumu" target="_blank" rel="noreferrer noopener">GitHub</a>
             <a class="btn btn-outline" href="#contact">Contact</a>
           </div>
         </div>
@@ -456,81 +488,46 @@
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Portfolio (NEW: categorized + filterable) -->
     <section id="projects">
       <div class="card">
-        <h2>Projects</h2>
-        <p class="subtitle">A few of my analytics projects with GitHub links.</p>
+        <h2>Portfolio</h2>
+        <p class="subtitle">Browse my work by category.</p>
 
-        <div class="projects-grid">
+        <div class="filters" id="projectFilters">
+          <button class="filter-btn active" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="financial">Financial Analysis</button>
+          <button class="filter-btn" type="button" data-filter="social">Social & Development</button>
+          <button class="filter-btn" type="button" data-filter="health">Healthcare & Public Health</button>
+          <button class="filter-btn" type="button" data-filter="eda">EDA / Practice</button>
+        </div>
 
-          <div class="project">
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- FINANCIAL -->
+          <div class="project" data-category="financial">
             <div class="project-top">
-              <h3>Barriers to Skilled Maternal Healthcare in Kenya (DHS)</h3>
-              <span class="badge inprogress">In Progress</span>
-            </div>
-            <p>Exploring why some women deliver at home instead of health facilities using DHS data.</p>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Public Health</span>
-            </div>
-            <a href="https://github.com/RitaAkumu/Maternal-Healthcare-Barriers" target="_blank">View on GitHub →</a>
-          </div>
-
-          <div class="project">
-            <div class="project-top">
-              <h3>Healthcare Data Analysis</h3>
+              <h3>Credit Default Risk Analysis</h3>
               <span class="badge completed">Completed</span>
             </div>
-            <p>Analyzed healthcare datasets to monitor trends and support resource planning.</p>
+            <p>
+              Credit risk analysis and default prediction using exploratory analysis, feature engineering,
+              and classification models.
+            </p>
             <div class="tags">
-              <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Power BI</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Credit Risk</span>
+              <span class="tag">Classification</span>
             </div>
-            <a href="https://github.com/RitaAkumu/Healthcare-facilities.git" target="_blank">View on GitHub →</a>
-          </div>
-   <div class="project">
-  <div class="project-top">
-    <h3>Kenya County Poverty & Population Analysis (Excel)</h3>
-    <span class="badge completed">Completed</span>
-  </div>
-  <p>
-    County-level poverty analysis (2015/16) compared with population and density (2019).
-    Includes KPIs, charts, and key insights for prioritizing interventions.
-  </p>
-  <div class="tags">
-    <span class="tag">Excel</span>
-    <span class="tag">Google Sheets</span>
-    <span class="tag">Dashboard</span>
-    <span class="tag">Data Cleaning</span>
-  </div>
-  <a href="https://github.com/RitaAkumu/Kenya-County-Poverty-and-Population-Analysis" target="_blank">
-    View on GitHub →
-  </a>
-</div>
-       <div class="project">
-            <div class="project-top">
-              <h3>Superstore Data Analysis</h3>
-              <span class="badge completed">Completed</span>
-            </div>
-            <p>EDA on Superstore dataset for sales performance and regional trends.</p>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">EDA</span><span class="tag">Insights</span>
-            </div>
-            <a href="https://github.com/RitaAkumu/Superstore-dataset.git" target="_blank">View on GitHub →</a>
+            <!-- UPDATE THIS LINK if your repo slug is different -->
+            <a href="https://github.com/RitaAkumu/Credit-Default-Risk-Analysis" target="_blank" rel="noreferrer noopener">
+              View on GitHub →
+            </a>
           </div>
 
-          <div class="project">
-            <div class="project-top">
-              <h3>Udemy Course Analysis</h3>
-              <span class="badge inprogress">In Progress</span>
-            </div>
-            <p>Analyzing Udemy course trends in ratings, engagement, and popularity.</p>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span>
-            </div>
-            <a href="https://github.com/RitaAkumu/Udemy-dataset" target="_blank">View on GitHub →</a>
-          </div>
-
-          <div class="project">
+          <div class="project" data-category="financial">
             <div class="project-top">
               <h3>Walmart Sales Analysis</h3>
               <span class="badge inprogress">In Progress</span>
@@ -539,10 +536,81 @@
             <div class="tags">
               <span class="tag">Python</span><span class="tag">Retail</span><span class="tag">Trends</span>
             </div>
-            <a href="https://github.com/RitaAkumu/Walmart-sales" target="_blank">View on GitHub →</a>
+            <a href="https://github.com/RitaAkumu/Walmart-sales" target="_blank" rel="noreferrer noopener">View on GitHub →</a>
           </div>
 
-          <div class="project">
+          <div class="project" data-category="financial">
+            <div class="project-top">
+              <h3>Superstore Data Analysis</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+            <p>EDA on Superstore dataset for sales performance and regional trends.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">EDA</span><span class="tag">Insights</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Superstore-dataset.git" target="_blank" rel="noreferrer noopener">View on GitHub →</a>
+          </div>
+
+          <!-- SOCIAL -->
+          <div class="project" data-category="social">
+            <div class="project-top">
+              <h3>Kenya County Poverty & Population Analysis (Excel)</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+            <p>
+              County-level poverty analysis (2015/16) compared with population and density (2019).
+              Includes KPIs, charts, and key insights for prioritizing interventions.
+            </p>
+            <div class="tags">
+              <span class="tag">Excel</span>
+              <span class="tag">Google Sheets</span>
+              <span class="tag">Dashboard</span>
+              <span class="tag">Data Cleaning</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Kenya-County-Poverty-and-Population-Analysis" target="_blank" rel="noreferrer noopener">
+              View on GitHub →
+            </a>
+          </div>
+
+          <!-- HEALTH -->
+          <div class="project" data-category="health">
+            <div class="project-top">
+              <h3>Barriers to Skilled Maternal Healthcare in Kenya (DHS)</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+            <p>Exploring why some women deliver at home instead of health facilities using DHS data.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Public Health</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Maternal-Healthcare-Barriers" target="_blank" rel="noreferrer noopener">View on GitHub →</a>
+          </div>
+
+          <div class="project" data-category="health">
+            <div class="project-top">
+              <h3>Healthcare Data Analysis</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+            <p>Analyzed healthcare datasets to monitor trends and support resource planning.</p>
+            <div class="tags">
+              <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Power BI</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Healthcare-facilities.git" target="_blank" rel="noreferrer noopener">View on GitHub →</a>
+          </div>
+
+          <!-- EDA / PRACTICE -->
+          <div class="project" data-category="eda">
+            <div class="project-top">
+              <h3>Udemy Course Analysis</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+            <p>Analyzing Udemy course trends in ratings, engagement, and popularity.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">EDA</span>
+            </div>
+            <a href="https://github.com/RitaAkumu/Udemy-dataset" target="_blank" rel="noreferrer noopener">View on GitHub →</a>
+          </div>
+
+          <div class="project" data-category="eda">
             <div class="project-top">
               <h3>Titanic Dataset Analysis</h3>
               <span class="badge inprogress">In Progress</span>
@@ -551,69 +619,69 @@
             <div class="tags">
               <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Visualization</span>
             </div>
-            <a href="https://github.com/RitaAkumu/Titanic-Dataset" target="_blank">View on GitHub →</a>
+            <a href="https://github.com/RitaAkumu/Titanic-Dataset" target="_blank" rel="noreferrer noopener">View on GitHub →</a>
           </div>
 
         </div>
       </div>
     </section>
+
     <!-- Writing -->
-<section id="writing">
-  <div class="card">
-    <h2>Writing</h2>
-    <p class="subtitle">Essays and reflections on healthcare, data, and social issues.</p>
+    <section id="writing">
+      <div class="card">
+        <h2>Writing</h2>
+        <p class="subtitle">Essays and reflections on healthcare, data, and social issues.</p>
 
-    <div class="projects-grid">
+        <div class="projects-grid">
 
-      <div class="project">
-        <div class="project-top">
-          <h3>Endometriosis & PCOS: The Silent Demons of Women’s Health</h3>
-          <span class="badge completed">Completed</span>
+          <div class="project">
+            <div class="project-top">
+              <h3>Endometriosis & PCOS: The Silent Demons of Women’s Health</h3>
+              <span class="badge completed">Completed</span>
+            </div>
+
+            <p>
+              A short awareness essay on how endometriosis and PCOS are often dismissed,
+              underdiagnosed, and not given enough public attention.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Writing</span>
+              <span class="tag">Women’s Health</span>
+              <span class="tag">Awareness</span>
+            </div>
+
+            <!-- UPDATE THIS LINK if needed -->
+            <a href="https://github.com/RitaAkumu/Womens-Health-Awareness-Essay" target="_blank" rel="noreferrer noopener">
+              Read on GitHub →
+            </a>
+          </div>
+
+          <div class="project">
+            <div class="project-top">
+              <h3>Healthcare Access & Equity: Notes and Observations</h3>
+              <span class="badge inprogress">In Progress</span>
+            </div>
+
+            <p>
+              Short reflections and insights on healthcare access, service delivery gaps,
+              and community-level challenges in Kenya.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Writing</span>
+              <span class="tag">Healthcare</span>
+              <span class="tag">Equity</span>
+            </div>
+
+            <a href="https://github.com/RitaAkumu/Womens-Health-Awareness-Essay" target="_blank" rel="noreferrer noopener">
+              View on GitHub →
+            </a>
+          </div>
+
         </div>
-
-        <p>
-          A short awareness essay on how endometriosis and PCOS are often dismissed,
-          underdiagnosed, and not given enough public attention.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Writing</span>
-          <span class="tag">Women’s Health</span>
-          <span class="tag">Awareness</span>
-        </div>
-
-        <a href="https://github.com/RitaAkumu/YOUR-REPO-LINK-HERE" target="_blank">
-          Read on GitHub →
-        </a>
       </div>
-
-      <!-- Optional: Add another writing entry later -->
-      <div class="project">
-        <div class="project-top">
-          <h3>Healthcare Access & Equity: Notes and Observations</h3>
-          <span class="badge inprogress">In Progress</span>
-        </div>
-
-        <p>
-          Short reflections and insights on healthcare access, service delivery gaps,
-          and community-level challenges in Kenya.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Writing</span>
-          <span class="tag">Healthcare</span>
-          <span class="tag">Equity</span>
-        </div>
-
-        <a href="https://github.com/RitaAkumu/Womens-Health-Awareness-Essay" target="_blank">
-          View on GitHub →
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Contact -->
     <section id="contact">
@@ -628,7 +696,7 @@
           </div>
           <div class="contact-item">
             <strong>💼 LinkedIn</strong>
-            <p><a href="https://www.linkedin.com/in/rita-akumu/" target="_blank">linkedin.com/in/rita-akumu</a></p>
+            <p><a href="https://www.linkedin.com/in/rita-akumu/" target="_blank" rel="noreferrer noopener">linkedin.com/in/rita-akumu</a></p>
           </div>
         </div>
       </div>
@@ -641,10 +709,39 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Mobile nav toggle
       const toggle = document.getElementById("navToggle");
       const links = document.getElementById("navLinks");
-      toggle.addEventListener("click", () => links.classList.toggle("open"));
-      document.getElementById("year").textContent = new Date().getFullYear();
+      if (toggle && links) {
+        toggle.addEventListener("click", () => links.classList.toggle("open"));
+      }
+
+      // Footer year
+      const year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+
+      // Project filtering (NEW)
+      const filterWrap = document.getElementById("projectFilters");
+      const projects = document.querySelectorAll("#projectsGrid .project");
+
+      if (filterWrap) {
+        filterWrap.addEventListener("click", (e) => {
+          const btn = e.target.closest(".filter-btn");
+          if (!btn) return;
+
+          // set active button
+          document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filter = btn.dataset.filter;
+
+          projects.forEach(card => {
+            const cat = card.dataset.category;
+            const show = (filter === "all" || cat === filter);
+            card.style.display = show ? "" : "none";
+          });
+        });
+      }
     });
   </script>
 
